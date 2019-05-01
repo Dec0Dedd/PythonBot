@@ -24,8 +24,8 @@ async def ping(ctx):
 	await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
 	
 @bot.command()
-async def announce(ctx, *, arg):
-	await ctx.send(arg)
+async def announce(ctx, *, channel, arg):
+	await ctx.send(channel, arg)
 	
 	
 @bot.command()
