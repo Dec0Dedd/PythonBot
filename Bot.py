@@ -12,14 +12,14 @@ async def on_ready():
 	print(bot.user.id)
 	print('--------------------------')
 	
-@bot.command()
+@bot.command() #Ready command
 async def ready(ctx):
-	await ctx.send('I\'m a bot mad by Michkaro. Here are my main commands:\
+	await ctx.send('I\'m a bot made by Michkaro. Here are my main commands:\
 	ping - shows you my ping,\
-	8ball - ask a question and I\'ll look into my ball to see if it\'s true or false\
+	8ball - ask a question and I\'ll look into my ball to see if it\'s true or false. \
 I\'m still being upgraded so you\'ll have to wait for now.')
 
-@bot.command()
+@bot.command() #Ping command
 async def ping(ctx):
 	await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
 	
@@ -30,8 +30,17 @@ async def announce(ctx, *, arg):
 	
 @bot.command()
 async def Hello():
-	await bot.say('Hey mate!')
+	await bot.say('Hey!')
+	
+@bot.command() #Info about player
+async def info(ctx, *, member: discord.Member):
+	fmt = '{0} joined on {0.joined.on} and has {1} roles'
+	await ctx.send(fmt.format(member, len(member.roles)))
 
+@info.error
+async def info_error(ctx, error):
+	if insistance (error, commands.BadArgument):
+		await ctx.send('I could not find the user...')
 
 bot.run('NTcxMzk4MjE5OTU1OTYxODU2.XMQP4w.1cv3VyIOS20LACtNU-SCZ__6Q5I')
 
