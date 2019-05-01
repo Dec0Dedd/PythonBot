@@ -2,37 +2,59 @@ import discord
 from discord.ext import commands
 import asyncio
 
-bot = commands.Bot(command_prefix = '!')
+bot = commands.Bot(command_prefix = '$')
 
 @bot.event
 async def on_ready():
+	await bot.change_presence(activity=discord.Game(name="Type $ready to start!"))
 	print('Bot is ready!')
 	print(bot.user.name)
 	print(bot.user.id)
 	print('--------------------------')
+	
+@bot.command()
+async def ready(ctx):
+	await ctx.send('I\'m a bot mad by Michkaro. Here are my main commands:\
+	ping - shows you my ping,\
+	8ball - ask a question and I\'ll look into my ball to see if it\'s true or false\
+I\'m still being upgraded so you\'ll have to wait for now.')
 
-@bot.command(pass_context=True)
-async def ping():
-	await bot.say('Pong!')
+@bot.command()
+async def ping(ctx):
+	await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
 	
-@bot.command(pass_context=True)
-async def mute(ctx,target:discord.Member):
+@bot.command()
+async def announce(ctx, *, arg):
+	await ctx.send(arg)
 	
-    role=discord.utils.get(ctx.message.server.roles,name='Muted')	
 	
-    await bot.add_roles(target,role)
-
-@bot.command(pass_context=True)
-async def warn(ctx,target:discord.Member):
-    await bot.send_message(target,'You got warned!!')
-	
-@bot.command(pass_context = True)
-async def kick(ctx,target:discord.Member):
-	await bot.kick(target)
-
-@bot.command(pass_context=True)
-async def ban(ctx,target:discord.Member):
-	await bot.ban(target)
+@bot.command()
+async def Hello():
+	await bot.say('Hey mate!')
 
 
 bot.run('NTcxMzk4MjE5OTU1OTYxODU2.XMQP4w.1cv3VyIOS20LACtNU-SCZ__6Q5I')
+
+
+	
+
+
+	
+	
+	
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
