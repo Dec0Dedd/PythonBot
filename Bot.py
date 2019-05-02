@@ -42,7 +42,7 @@ async def info_error(ctx, error):
 	if insistance (error, commands.BadArgument):
 		await ctx.send('I could not find the user...')
 
-bot.run('NTcxMzk4MjE5OTU1OTYxODU2.XMQP4w.1cv3VyIOS20LACtNU-SCZ__6Q5I')
+bot.run('BOT_TOKEN)
 
 
 	
